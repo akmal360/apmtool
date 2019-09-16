@@ -20,4 +20,17 @@ public class ProjectService {
         }
 
     }
+
+    public Project findProjectByIdentifier(String projectId){
+        Project project=  projectRepo.findByProjectIdentifier(projectId.toUpperCase());
+        if (project==null){
+            throw new ProjectIdException("Project ID '"+projectId+"'Does not exists ");
+
+        }
+        return project;
+    }
+    public Iterable<Project> findAllProject(){
+        return projectRepo.findAll();
+    }
+
 }
